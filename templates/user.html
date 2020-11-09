@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Line</title>
+</head>
+<body>
+    {% for user in users %}
+        {{ user.username }}<br>
+        {{ user.type }}<br>
+        {{ user.contact.email }}<br>
+        {{ user.contact.phone }}<br>
+        {{ user.location }}<br>
+        {{ user.rating }}
+    {% endfor %}
+</body>
+</html>
