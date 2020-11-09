@@ -1,0 +1,17 @@
+body{
+    background-color: #E5F8BF;
+}
+
+.nav-color{
+    background-color: #E5F8BF;
+}
+
+html .logo-txt{
+    font-family: 'Monoton',cursive;
+    color: #5A8241;
+    font-size: 30px;
+}
+
+.mobile-menu{
+    color:#5A8241;
+}
