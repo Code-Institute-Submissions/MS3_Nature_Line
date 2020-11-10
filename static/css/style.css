@@ -9,9 +9,22 @@ body{
 html .logo-txt{
     font-family: 'Monoton',cursive;
     color: #5A8241;
-    font-size: 30px;
+    font-size: 1.5rem;
+    padding-left: 3%;
 }
 
-.mobile-menu{
+nav ul a{
+    font-family: 'MuseoModerno', cursive;
+    color: #5A8241;
+}
+
+.mobile-menu-icon{
     color:#5A8241;
+    
+}
+
+.mobile-sidenav li a{
+    font-family: 'MuseoModerno', cursive;
+    color: #5A8241; 
+    
 }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}" type = "text/css">
     <title>Nature Line</title>
 </head>
@@ -13,8 +14,8 @@
     <header>
         <nav class="nav-extended">
             <div class="nav-wrapper nav-color">
-              <a href="#!" class="brand-logo logo-txt">Nature Line</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons mobile-menu">dehaze</i></a>
+              <a href="#" class="brand-logo logo-txt">Nature Line</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons mobile-menu-icon">dehaze</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="#">Sign Up</a></li>
                 <li><a href="#">Log In</a></li>
@@ -25,14 +26,14 @@
             </div>
           </nav>
         
-          <ul class="sidenav nav-color" id="mobile-demo">
+          <ul class="sidenav nav-color mobile-sidenav" id="mobile-demo">
+                <li><h4 class="logo-txt center-align">Nature Line</h4></li>
                 <li><a href="#">Sign Up</a></li>
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Log Out</a></li>
                 <li><a href="#">Local Farmers</a></li>
                 <li><a href="#">About</a></li>
-          </ul>
-                 
+          </ul>    
     </header>
     {% block content %}
     {% endblock %}
