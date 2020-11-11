@@ -2,8 +2,11 @@ body{
     background-color: #E5F8BF;
 }
 
+/* navbar styling */
+
 .nav-color{
     background-color: #E5F8BF;
+    box-shadow: none;
 }
 
 html .logo-txt{
@@ -25,6 +28,27 @@ nav ul a{
 
 .mobile-sidenav li a{
     font-family: 'MuseoModerno', cursive;
-    color: #5A8241; 
-    
+    color: #5A8241;     
+}
+
+/* landing page styling*/
+
+.landing-page-bg{
+    height: 80vh;
+    width: 100%;
+    margin-top: 5%;
+    background-image: url(/static/img/Asset1.svg);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.landing-txt{
+    font-family: 'MuseoModerno', cursive;
+    color: #5A8241;      
+    font-size: 1.5rem;
+   
+}
+.page-footer{
+background-color: #87c950;
 }
