@@ -13,6 +13,7 @@
 <body>
     <header>
         <nav class="nav-extended">
+          <!--Desktop navbar-->
             <div class="nav-wrapper nav-color">
               <a href="{{ url_for('home') }}" class="brand-logo logo-txt">Nature Line</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons mobile-menu-icon">dehaze</i></a>
@@ -25,7 +26,7 @@
               </ul>
             </div>
           </nav>
-        
+          <!--Mobile side-nav-->
           <ul class="sidenav nav-color mobile-sidenav" id="mobile-demo">
                 <li><h4 class="logo-txt center-align">Nature Line</h4></li>
                 <li><a href="{{ url_for('register') }}">Sign Up</a></li>

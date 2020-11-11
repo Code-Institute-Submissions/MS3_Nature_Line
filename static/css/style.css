@@ -31,7 +31,7 @@ nav ul a{
     color: #5A8241;     
 }
 
-/* landing page styling*/
+/* landing page styling */
 
 .landing-page-bg{
     height: 80vh;
@@ -52,7 +52,7 @@ nav ul a{
 .page-footer{
 background-color: #87c950;
 }
-
+/* Register and login page styling */
 .wrapper{
     height: 80vh;
     width: 100%;
