@@ -62,3 +62,11 @@ background-color: #87c950;
     background-position: center;
     background-repeat: no-repeat;
 }
+
+/* flash messages */
+.flash-msg{
+    line-height: 2;
+    background-color: #E5F8BF;
+    font-family: 'MuseoModerno', cursive;
+    font-size: 1.5rem;
+}
