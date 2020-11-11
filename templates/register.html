@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="wrapper">
+        <h3 class="center-align logo-txt">Register</h3>
+        <div class="row">
+            <form class="col s8 m4 offset-s2 offset-m4">
+              <div class="card-panel lime darken-1">
+                  <!--Username-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix lime-text text-lighten-5">account_circle</i>
+                        <input id="username" name="username" type="text" class="validate">
+                        <label class="lime-text text-lighten-5" for="username">Username</label>
+                    </div>
+                </div>
+                <!--Password-->
+                <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix lime-text text-lighten-5">lock</i>
+                      <input id="password" name="password" type="password" class="validate">
+                      <label class="lime-text text-lighten-5" for="password">Password</label>
+                    </div>
+                </div>
+                <!--Submit button-->
+                <div class="row">
+                   <button type="submit" class="col s12 btn-small purple darken-1">Register</button> 
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+{% endblock %}
