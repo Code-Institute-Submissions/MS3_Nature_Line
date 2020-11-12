@@ -65,8 +65,8 @@ background-color: #87c950;
 
 /* flash messages */
 .flash-msg{
-    line-height: 2;
-    background-color: #E5F8BF;
+    line-height: 1;
+    background-color: #e5f8bf00;
     font-family: 'MuseoModerno', cursive;
     font-size: 1.5rem;
 }

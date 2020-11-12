@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="wrapper">
-        <h3 class="center-align logo-txt">Register</h3>
+        <h3 class="center-align logo-txt">Log In</h3>
         <div class="row">
-            <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('register') }}">
+            <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('login') }}">
               <div class="card-panel lime darken-1">
                   <!--Username-->
                 <div class="row">
@@ -23,31 +23,19 @@
                       <label class="lime-text text-lighten-5" for="password">Password</label>
                     </div>
                 </div>
-                <!--Account type-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix lime-text text-lighten-5">supervisor_account</i>
-                        <select class="lime-text text-lighten-5" name="user_type" required>
-                          <option value="" disabled selected >Choose your option</option>
-                          <option value="buyer">Buyer</option>
-                          <option value="producer">Producer</option>
-                        </select>
-                        <label class="lime-text text-lighten-5">Choose account type:</label>
-                    </div>
-                </div>
                 <!--Submit button-->
                 <div class="row">
-                   <button type="submit" class="col s12 btn-small purple darken-1">Register</button> 
+                   <button type="submit" class="col s12 btn-small purple darken-1">Log In</button> 
                 </div>
               </div>
             </form>
           </div>
     </div>
     <div class="row">
-      <div class="col s8 m4 offset-s2 offset-m4">
-          <p class="center-align purple-text text-darken-1">
-            Have an account?<a href="{{ url_for('login') }}"> Log In here!</a>
-          </p>
-      </div>
-  </div>
+        <div class="col s8 m4 offset-s2 offset-m4">
+            <p class="center-align purple-text text-darken-1">
+              Don't have an account?<a href="{{ url_for('register') }}"> Register here!</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}

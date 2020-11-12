@@ -19,7 +19,7 @@
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons mobile-menu-icon">dehaze</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('register') }}">Sign Up</a></li>
-                <li><a href="#">Log In</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="#">Log Out</a></li>
                 <li><a href="#">Local Farmers</a></li>
                 <li><a href="#">About</a></li>
@@ -30,7 +30,7 @@
           <ul class="sidenav nav-color mobile-sidenav" id="mobile-demo">
                 <li><h4 class="logo-txt center-align">Nature Line</h4></li>
                 <li><a href="{{ url_for('register') }}">Sign Up</a></li>
-                <li><a href="#">Log In</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="#">Log Out</a></li>
                 <li><a href="#">Local Farmers</a></li>
                 <li><a href="#">About</a></li>
