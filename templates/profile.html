@@ -1,11 +1,123 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for user in users %}
-        {{ user.username }}<br>
-        {{ user.type }}<br>
-        {{ user.contact.email }}<br>
-        {{ user.contact.phone }}<br>
-        {{ user.location }}<br>
-        {{ user.rating }}
-    {% endfor %}
+    <div class="container profile-container">
+        <div class="row">
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="/static/img/farmer.svg">
+                      <span class="card-title">Username</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <h4 class="col s12 center-align">Info</h4>
+                            <p class="col s12 center-align">Name: Username</p>
+                            <p class="col s12 center-align">Location: Cork</p>
+                            <p class="col s12 center-align">Types of products: Fruit, Vegetables</p>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s8">
+                <div class="row">
+                    <h4 class="center-align">Products:</h4>
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="images/sample-1.jpg">
+                            <span class="card-title">Card Title</span>
+                          </div>
+                          <div class="card-content">
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">This is a link</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

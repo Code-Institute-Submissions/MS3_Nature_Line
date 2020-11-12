@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="wrapper">
+        <h3 class="center-align logo-txt">Add product</h3>
+        <div class="row">
+            <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('add_product') }}">
+              <div class="card-panel lime darken-1">
+                  <!--Product category-->
+                  <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix lime-text text-lighten-5">list_alt</i>
+                        <select class="lime-text text-lighten-5 validate" name="category" required>
+                          <option value="" disabled selected >Choose product category</option>
+                          {% for product in products %}
+                            <option value="{{ product.category }}">{{ product.category }}</option>
+                          {% endfor %}
+                        </select>
+                        <label for="category"class="lime-text text-lighten-5">Choose product category:</label>
+                    </div>
+                </div>
+                <!--Product name-->
+                <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix lime-text text-lighten-5">title</i>
+                      <input id="name" name="name" type="text" class="validate" 
+                            minlength="3" maxlength="20" required>
+                      <label class="lime-text text-lighten-5" for="name">Product name</label>
+                    </div>
+                </div>
+                <!--Product price-->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix lime-text text-lighten-5">euro</i>
+                    <input id="price" name="price" type="number" class="validate" 
+                          minlength="1" maxlength="4" required>
+                    <label class="lime-text text-lighten-5" for="price">Product price</label>
+                  </div>
+                </div>
+                <!--Product quantity-->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix lime-text text-lighten-5">scatter_plot</i>
+                    <input id="quantity" name="quantity" type="text" class="validate" 
+                          minlength="1" maxlength="10" required>
+                    <label class="lime-text text-lighten-5" for="quantity">Product quantity</label>
+                  </div>
+                </div>
+                <!--Submit button-->
+                <div class="row">
+                   <button type="submit" class="col s12 btn-small purple darken-1">Add product</button> 
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+    
+{% endblock %}

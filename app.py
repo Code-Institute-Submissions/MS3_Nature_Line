@@ -21,6 +21,9 @@ mongo = PyMongo(app)
 # Landing page
 @app.route("/home")
 def home():
+    if 'user' in session:
+        return redirect(url_for("profile", username = session["user"]))
+
     return render_template("index.html")
 
 #Register functionality
@@ -71,7 +74,7 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
+#Profile functionality
 @app.route("/profile/<username>", methods = ["GET", "POST"])
 def profile(username):
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
@@ -80,6 +83,25 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+#Add product functionality
+@app.route("/add_product", methods = ["GET", "POST"])
+def add_product():
+    if request.method == "POST":
+        product = {
+            "category": request.form.get("category"),
+            "name": request.form.get("name"),
+            "price": request.form.get("price"),
+            "quantity": request.form.get("quantity"),
+            "sold_by": session["user"]
+        }
+        mongo.db.products.insert_one(product)
+        flash("Product successfully added!")
+        return redirect (url_for("profile", username=session["user"]))
+    products = mongo.db.products.find().sort("category", 1)
+    return render_template("add_product.html", products=products)
+
+
 
 @app.route("/")
 def test():
