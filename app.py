@@ -18,17 +18,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# Landing page
 @app.route("/home")
 def home():
     return render_template("index.html")
 
-
+#Register functionality
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
-
+        # Check if username already exists
         if existing_user:
             flash("Username already exists!")
             return redirect(url_for("register"))
@@ -42,18 +42,20 @@ def register():
 
         session["user"] = request.form.get("username").lower()
         flash("Registration Successfull!")
+        return redirect(url_for('profile', username=session["user"]))
     return render_template("register.html")
 
-
+#Login functionality
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
-
+        # Check if username/password is correct
         if existing_user:
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] =  request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for('profile', username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password!")
                 return redirect(url_for("login"))
@@ -61,6 +63,23 @@ def login():
             flash("Incorrect Username and/or Password!")
             return redirect(url_for("login"))
     return render_template("login.html")
+
+#Logout functionality
+@app.route("/logout")
+def logout():
+    flash("You have bee successfully loged out!")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
+@app.route("/profile/<username>", methods = ["GET", "POST"])
+def profile(username):
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
 
 @app.route("/")
 def test():
