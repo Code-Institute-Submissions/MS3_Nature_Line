@@ -3,120 +3,51 @@
     <div class="container profile-container">
         <div class="row">
             <div class="col s4">
-                <div class="card">
+                <div class="card lime darken-1">
                     <div class="card-image">
-                      <img src="/static/img/farmer.svg">
-                      <span class="card-title">Username</span>
+                    {% if curr_user.type == "producer" %}
+                        <img src="/static/img/farmer.svg">
+                    {% else %}
+                        <img src="/static/img/boy.svg">
+                    {% endif %}
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <h4 class="col s12 center-align">Info</h4>
-                            <p class="col s12 center-align">Name: Username</p>
-                            <p class="col s12 center-align">Location: Cork</p>
-                            <p class="col s12 center-align">Types of products: Fruit, Vegetables</p>
+                            <h4 class="card-title purple-text text-darken-1 center-align">User: {{ username }}</h4>
+                            <h5 class="col s12 center-align">Info</h5>
+                            <p class="col s12 center-align">Location: <strong>{{ curr_user.location }}</strong></p>
+                            <p class="col s12 center-align">Contact: <strong>{{ curr_user.contact.email }}</strong></p>
+                            <p class="col s12 center-align">Phone: <strong>{{ curr_user.contact.phone }}</strong></p>
                         </div>
                     </div>
                     <div class="card-action">
-                      <a href="#">This is a link</a>
+                      <a href="{{ url_for('add_product') }}" class="left-align">Add an product</a>
+                      <a href="" class="right-align">Update info</a>
                     </div>
                 </div>
             </div>
             <div class="col s8">
-                <div class="row">
-                    <h4 class="center-align">Products:</h4>
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
+                <h4 class="center-align">Products:</h4>
+                    <div class="row">
+                        {% for item in curr_user.products %}
+
+                        <div class="col s4">
+                            <div class="card lime darken-1">
+                                <div class="card-image">
+                                    <img src="/static/img/harvest.svg">
+                                    <span class="card-title">{{ item.0.name }}</span>
+                                </div>
+                                <div class="card-content row">
+                                    <span class=" col s12">Price: {{ item.0.price }}<i class="tiny material-icons">euro</i></span>
+                                    <span class=" col s12">Quantity: {{ item.0.quantity }}kg</span>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#" class=" btn-small purple darken-1">Edit product</a>
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                          </div>
-                          <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">This is a link</a>
-                          </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

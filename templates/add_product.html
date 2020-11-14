@@ -10,7 +10,6 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix lime-text text-lighten-5">list_alt</i>
                         <select class="lime-text text-lighten-5 validate" name="category" required>
-                          <option value="" disabled selected >Choose product category</option>
                           {% for product in products %}
                             <option value="{{ product.category }}">{{ product.category }}</option>
                           {% endfor %}

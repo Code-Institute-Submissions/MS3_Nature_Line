@@ -78,9 +78,9 @@ def logout():
 @app.route("/profile/<username>", methods = ["GET", "POST"])
 def profile(username):
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
-    
+    curr_user = mongo.db.users.find_one({"username": session["user"]})
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, curr_user=curr_user)
 
     return redirect(url_for("login"))
 
@@ -88,14 +88,14 @@ def profile(username):
 @app.route("/add_product", methods = ["GET", "POST"])
 def add_product():
     if request.method == "POST":
-        product = {
+        product = [{
             "category": request.form.get("category"),
             "name": request.form.get("name"),
             "price": request.form.get("price"),
             "quantity": request.form.get("quantity"),
             "sold_by": session["user"]
-        }
-        mongo.db.products.insert_one(product)
+        }]
+        mongo.db.users.update({"username": session["user"]}, {"$push": {"products": product}})
         flash("Product successfully added!")
         return redirect (url_for("profile", username=session["user"]))
     products = mongo.db.products.find().sort("category", 1)
