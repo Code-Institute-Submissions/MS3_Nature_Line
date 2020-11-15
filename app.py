@@ -79,8 +79,10 @@ def logout():
 def profile(username):
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
     curr_user = mongo.db.users.find_one({"username": session["user"]})
+    products_sold = mongo.db.products_sold.find()
+    #Add var to target products user for displaying and editing...aand adding
     if session["user"]:
-        return render_template("profile.html", username=username, curr_user=curr_user)
+        return render_template("profile.html", username=username, curr_user=curr_user, products_sold=products_sold)
 
     return redirect(url_for("login"))
 
@@ -88,25 +90,28 @@ def profile(username):
 @app.route("/add_product", methods = ["GET", "POST"])
 def add_product():
     if request.method == "POST":
-        product = [{
+        product_sold = {
             "category": request.form.get("category"),
             "name": request.form.get("name"),
             "price": request.form.get("price"),
             "quantity": request.form.get("quantity"),
             "sold_by": session["user"]
-        }]
-        mongo.db.users.update({"username": session["user"]}, {"$push": {"products": product}})
+        }
+        mongo.db.products_sold.insert_one(product_sold)
         flash("Product successfully added!")
         return redirect (url_for("profile", username=session["user"]))
-    products = mongo.db.products.find().sort("category", 1)
-    return render_template("add_product.html", products=products)
+    product_cat = mongo.db.product_categories.find().sort("category", 1)
+    return render_template("add_product.html", product_cat=product_cat)
+
+
+@app.route("/edit_product/<product_id>", methods=["GET","POST"])
+def edit_product(product_id):
+    product_sold = mongo.db.products_sold.find_one({"_id": ObjectId(product_id)})
+    product_cat = mongo.db.product_categories.find().sort("category", 1)
+    return render_template("edit_product.html", product_sold=product_sold,product_cat=product_cat)
 
 
 
-@app.route("/")
-def test():
-    users = mongo.db.users.find()
-    return render_template("user.html", users=users)
 
 
 if __name__ == "__main__":

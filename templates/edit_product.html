@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="wrapper">
-        <h3 class="center-align logo-txt">Add product</h3>
+        <h3 class="center-align logo-txt">Edit product</h3>
         <div class="row">
-            <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('add_product') }}">
+            <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('edit_product', product_id=product_sold._id) }}">
               <div class="card-panel lime darken-1">
                   <!--Product category-->
                   <div class="row">
@@ -23,7 +23,7 @@
                       <i class="material-icons prefix lime-text text-lighten-5">title</i>
                       <input id="name" name="name" type="text" class="validate" 
                             minlength="3" maxlength="20" required>
-                      <label class="lime-text text-lighten-5" for="name">Product name</label>
+                      <label class="lime-text text-lighten-5" for="name">{{ product_sold.name }}</label>
                     </div>
                 </div>
                 <!--Product price-->
@@ -32,7 +32,7 @@
                     <i class="material-icons prefix lime-text text-lighten-5">euro</i>
                     <input id="price" name="price" type="number" class="validate" 
                           minlength="1" maxlength="4" required>
-                    <label class="lime-text text-lighten-5" for="price">Product price</label>
+                    <label class="lime-text text-lighten-5" for="price">{{ product_sold.price }}</label>
                   </div>
                 </div>
                 <!--Product quantity-->
@@ -41,12 +41,12 @@
                     <i class="material-icons prefix lime-text text-lighten-5">scatter_plot</i>
                     <input id="quantity" name="quantity" type="number" class="validate" 
                           minlength="1" maxlength="5" required>
-                    <label class="lime-text text-lighten-5" for="quantity">Product quantity(in kgs)</label>
+                    <label class="lime-text text-lighten-5" for="quantity">{{ product_sold.quantity }}</label>
                   </div>
                 </div>
                 <!--Submit button-->
                 <div class="row">
-                   <button type="submit" class="col s12 btn-small purple darken-1">Add product</button> 
+                   <button type="submit" class="col s12 btn-small purple darken-1">Edit product</button> 
                 </div>
               </div>
             </form>

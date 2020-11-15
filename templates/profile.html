@@ -21,28 +21,28 @@
                         </div>
                     </div>
                     <div class="card-action">
-                      <a href="{{ url_for('add_product') }}" class="left-align">Add an product</a>
-                      <a href="" class="right-align">Update info</a>
+                      <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
+                      <a href="" class="right-align btn-small purple darken-1">Update info</a>
                     </div>
                 </div>
             </div>
             <div class="col s8">
                 <h4 class="center-align">Products:</h4>
                     <div class="row">
-                        {% for item in curr_user.products %}
+                        {% for item in products_sold %}
 
                         <div class="col s4">
                             <div class="card lime darken-1">
                                 <div class="card-image">
                                     <img src="/static/img/harvest.svg">
-                                    <span class="card-title">{{ item.0.name }}</span>
+                                    <span class="card-title">{{ item.name }}</span>
                                 </div>
                                 <div class="card-content row">
-                                    <span class=" col s12">Price: {{ item.0.price }}<i class="tiny material-icons">euro</i></span>
-                                    <span class=" col s12">Quantity: {{ item.0.quantity }}kg</span>
+                                    <span class=" col s12">Price: {{ item.price }}<i class="tiny material-icons">euro</i></span>
+                                    <span class=" col s12">Quantity: {{ item.quantity }}kg</span>
                                 </div>
                                 <div class="card-action">
-                                    <a href="#" class=" btn-small purple darken-1">Edit product</a>
+                                    <a href="{{ url_for('edit_product', product_id=item._id )}}" class=" btn-small purple darken-1">Edit product</a>
                                 </div>
                             </div>
                         </div>
