@@ -38,9 +38,13 @@ def register():
             return redirect(url_for("register"))
 
         register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "type": request.form.get("user_type").lower()
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password")),
+                "type": request.form.get("user_type").lower(),
+                "location": request.form.get("location"),
+                "contact":{ "email": request.form.get("email").lower(),
+                            "phone": request.form.get("phone")
+                }
         }
         mongo.db.users.insert_one(register)
 

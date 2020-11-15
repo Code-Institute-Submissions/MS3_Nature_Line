@@ -2,6 +2,7 @@
 {% block content %}
     <div class="container profile-container">
         <div class="row">
+        <!--Profile info-->
             <div class="col s4">
                 <div class="card lime darken-1">
                     <div class="card-image">
@@ -21,39 +22,44 @@
                         </div>
                     </div>
                     <div class="card-action">
-                      {% if session.user|lower == username %}
-                            <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
-                            <a href="{{ url_for('update_info', username=username) }}" class="right-align btn-small purple darken-1">Update info</a>
-                      {% endif %}
+                        <div class="row">
+                            {% if session.user|lower == username and curr_user.type == "producer" %}
+                                <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
+                                <a href="{{ url_for('update_info', username=username) }}" class="right-align btn-small purple darken-1">Update info</a>
+                            {% elif curr_user.type == "buyer" %}
+                                <a href="{{ url_for('update_info', username=username) }}" class="col s4 offset-s4 btn-small purple darken-1">Update info</a>
+                            {% endif %}
+                       </div>
                     </div>
                 </div>
             </div>
             <div class="col s8">
+            <!--Products and favorites section-->
                 <h4 class="center-align">Products:</h4>
                     <div class="row">
                         {% for item in products_sold %}
-                        <div class="col s4">
-                            <div class="card lime darken-1">
-                                <div class="card-image">
-                                    <img src="/static/img/harvest.svg">
-                                    <span class="card-title">{{ item.name }}</span>
-                                </div>
-                                <div class="card-content row">
-                                    <span class=" col s12">Price: {{ item.price }}<i class="tiny material-icons">euro</i></span>
-                                    <span class=" col s12">Quantity: {{ item.quantity }}kg</span>
-                                </div>
-                                <div class="card-action">
-                                        {% if session.user|lower == username %}
+                            {% if item.sold_by == session.user %}
+                                <div class="col s4">
+                                    <div class="card lime darken-1">
+                                        <div class="card-image">
+                                            <img src="/static/img/harvest.svg">
+                                            <span class="card-title">{{ item.name }}</span>
+                                        </div>
+                                        <div class="card-content row">
+                                            <span class=" col s12">Price: {{ item.price }}<i class="tiny material-icons">euro</i></span>
+                                            <span class=" col s12">Quantity: {{ item.quantity }}kg</span>
+                                        </div>
+                                        <div class="card-action">
                                             <div class="row">
                                                 <a href="{{ url_for('edit_product', product_id=item._id )}}" class=" btn-small purple darken-1 col s12">Edit product</a>
                                             </div>
                                             <div class="row">
                                                 <a href="{{ url_for('delete_product', product_id=item._id )}}" class=" btn-small red darken-1 col s12">Delete product</a>
-                                            </div>
-                                        {% endif %}
+                                           </div>
+                                        </div> 
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
             </div>
