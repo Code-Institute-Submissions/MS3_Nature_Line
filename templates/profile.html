@@ -21,8 +21,10 @@
                         </div>
                     </div>
                     <div class="card-action">
-                      <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
-                      <a href="" class="right-align btn-small purple darken-1">Update info</a>
+                      {% if session.user|lower == username %}
+                            <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
+                            <a href="" class="right-align btn-small purple darken-1">Update info</a>
+                      {% endif %}
                     </div>
                 </div>
             </div>
@@ -30,7 +32,6 @@
                 <h4 class="center-align">Products:</h4>
                     <div class="row">
                         {% for item in products_sold %}
-
                         <div class="col s4">
                             <div class="card lime darken-1">
                                 <div class="card-image">
@@ -42,7 +43,14 @@
                                     <span class=" col s12">Quantity: {{ item.quantity }}kg</span>
                                 </div>
                                 <div class="card-action">
-                                    <a href="{{ url_for('edit_product', product_id=item._id )}}" class=" btn-small purple darken-1">Edit product</a>
+                                        {% if session.user|lower == username %}
+                                            <div class="row">
+                                                <a href="{{ url_for('edit_product', product_id=item._id )}}" class=" btn-small purple darken-1 col s12">Edit product</a>
+                                            </div>
+                                            <div class="row">
+                                                <a href="{{ url_for('delete_product', product_id=item._id )}}" class=" btn-small red darken-1 col s12">Delete product</a>
+                                            </div>
+                                        {% endif %}
                                 </div>
                             </div>
                         </div>
