@@ -134,6 +134,21 @@ def delete_product(product_id):
     return redirect (url_for("profile", username=session["user"]))
 
 
+@app.route("/update_info/<username>", methods = ["GET", "POST"])
+def update_info(username):
+    curr_user = mongo.db.users.find_one({"username": session["user"]})
+    username = curr_user["username"]
+    if request.method == "POST":
+        mongo.db.users.update({"username": session["user"]}, {"$set":{
+                "type": request.form.get("type").lower(),
+                "location": request.form.get("location"),
+                "contact.email": request.form.get("email").lower(),
+                "contact.phone": request.form.get("phone")
+        }})
+        flash("Info successfully updated!")
+        return redirect (url_for("profile", username=username))
+    return render_template("update_info.html", username=username, curr_user=curr_user)
+    
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
