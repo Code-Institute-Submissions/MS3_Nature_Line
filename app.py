@@ -27,6 +27,11 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/local_farmers")
+def local_farmers():
+    users = mongo.db.users.find()
+    return render_template("local_farmers.html", users=users)
+
 #Register functionality
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -131,6 +136,7 @@ def edit_product(product_id):
     return render_template("edit_product.html", product_sold=product_sold,product_cat=product_cat)
 
 
+#Delete info functionality
 @app.route("/delete_product/<product_id>")
 def delete_product(product_id):
     mongo.db.products_sold.remove({"_id": ObjectId(product_id)})
@@ -138,6 +144,7 @@ def delete_product(product_id):
     return redirect (url_for("profile", username=session["user"]))
 
 
+#Update info functionality
 @app.route("/update_info/<username>", methods = ["GET", "POST"])
 def update_info(username):
     curr_user = mongo.db.users.find_one({"username": session["user"]})

@@ -24,8 +24,8 @@
                     <div class="card-action">
                         <div class="row">
                             {% if session.user|lower == username and curr_user.type == "producer" %}
-                                <a href="{{ url_for('add_product') }}" class="left-align btn-small purple darken-1">Add an product</a>
-                                <a href="{{ url_for('update_info', username=username) }}" class="right-align btn-small purple darken-1">Update info</a>
+                                <a href="{{ url_for('add_product') }}" class="left-align col s5 btn-small purple darken-1">Add an product</a>
+                                <a href="{{ url_for('update_info', username=username) }}" class="col s5 offset-s2 btn-small purple darken-1">Update info</a>
                             {% elif curr_user.type == "buyer" %}
                                 <a href="{{ url_for('update_info', username=username) }}" class="col s4 offset-s4 btn-small purple darken-1">Update info</a>
                             {% endif %}
