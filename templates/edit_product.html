@@ -11,7 +11,11 @@
                         <i class="material-icons prefix lime-text text-lighten-5">list_alt</i>
                         <select class="lime-text text-lighten-5 validate" name="category" required>
                           {% for product in product_cat %}
-                            <option value="{{ product.category }}">{{ product.category }}</option>
+                              {% if product.category == product_sold.category %}
+                                  <option value="{{ product.category }}" selected>{{ product.category }}</option>
+                              {% else %}
+                                  <option value="{{ product.category }}">{{ product.category }}</option>
+                              {% endif %}
                           {% endfor %}
                         </select>
                         <label for="category"class="lime-text text-lighten-5">Choose product category:</label>
@@ -22,8 +26,8 @@
                     <div class="input-field col s12">
                       <i class="material-icons prefix lime-text text-lighten-5">title</i>
                       <input id="name" name="name" type="text" class="validate" 
-                            minlength="3" maxlength="20" required>
-                      <label class="lime-text text-lighten-5" for="name">{{ product_sold.name }}</label>
+                      value="{{ product_sold.name }}" minlength="3" maxlength="20" required>
+                      <label class="lime-text text-lighten-5" for="name">Product name</label>
                     </div>
                 </div>
                 <!--Product price-->
@@ -31,8 +35,8 @@
                   <div class="input-field col s12">
                     <i class="material-icons prefix lime-text text-lighten-5">euro</i>
                     <input id="price" name="price" type="number" class="validate" 
-                          minlength="1" maxlength="4" required>
-                    <label class="lime-text text-lighten-5" for="price">{{ product_sold.price }}</label>
+                      value="{{ product_sold.price }}"    minlength="1" maxlength="4" required>
+                    <label class="lime-text text-lighten-5" for="price">Product price</label>
                   </div>
                 </div>
                 <!--Product quantity-->
@@ -40,14 +44,17 @@
                   <div class="input-field col s12">
                     <i class="material-icons prefix lime-text text-lighten-5">scatter_plot</i>
                     <input id="quantity" name="quantity" type="number" class="validate" 
-                          minlength="1" maxlength="5" required>
-                    <label class="lime-text text-lighten-5" for="quantity">{{ product_sold.quantity }}</label>
+                      value="{{ product_sold.quantity }}"    minlength="1" maxlength="5" required>
+                    <label class="lime-text text-lighten-5" for="quantity">Product quantity</label>
                   </div>
                 </div>
                 <!--Submit button-->
                 <div class="row">
-                   <button type="submit" class="col s12 btn-small purple darken-1">Edit product</button> 
+                   <button type="submit" class="col s12 btn-small purple darken-1">Edit product</button>
                 </div>
+                <div class="row">
+                  <a href="{{ url_for('home') }}" class="col s12 btn-small red darken-1">Cancel</a>
+               </div>
               </div>
             </form>
           </div>
