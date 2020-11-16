@@ -1,41 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-
-<div class="container">
   <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6 offset-s1 offset-m2">
-          <textarea id="query" class="materialize-textarea"></textarea>
-          <label for="query">Search</label>
+    <form class="col s12" action="{{ url_for('search') }}" method="POST">
+      <div class="row center-align valign-wrapper">
+        <div class="input-field col s12 m8 offset-m2">
+          <input id="query" type="text" name="query" class="materialize-textarea"></input>
+          <label for="query">Type Username or Location</label>
         </div>
-        <div class="col s4">
+        <div class="col s12 m4">
+          <a href="{{ url_for('local_farmers', users=users) }}" class="red btn-small">Reset</a>
           <button type="submit" class="btn-small purple darken-1">Search</button>
         </div>
       </div>
     </form>
   </div>
-  <div class="row">
+  <div class="container">
+    <div class="row">
   {% for user in users %}
-    {% if user.type == "producer" %}
+  {% if user.type == "producer" %}
       <div class="col s4">
         <div class="card lime darken-1">
-          <div class="card-image">
+          <div class="card-image responsive-img">
               <img src="/static/img/farmer.svg">
           </div>
           <div class="card-content row">
-            <h4 class="card-title purple-text text-darken-1 center-align">User: {{ user.username }}</h4>
-            <h5 class="col s12 center-align">Info</h5>
-            <p class="col s12 center-align">Location: <strong>{{ user.location }}</strong></p>
-            <p class="col s12 center-align">Contact: <strong>{{ user.contact.email }}</strong></p>
-            <p class="col s12 center-align">Phone: <strong>{{ user.contact.phone }}</strong></p>
+            <p class="purple-text text-darken-1 center-align">User: {{ user.username }}</p>
+            <p class="center-align">Location: {{ user.location }}</p>
           </div> 
         </div>
       </div>
-    {% endif %}  
+      {% endif %}  
   {% endfor %}
+      {% if users|length == 0 %}
+          <h3 class="red-text text-darken-2 center-align">No Results</h3>
+      {% endif %}
+    </div>
   </div>
-</div>
 {% endblock %}

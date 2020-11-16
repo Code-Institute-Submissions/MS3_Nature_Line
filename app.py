@@ -29,7 +29,14 @@ def home():
 
 @app.route("/local_farmers")
 def local_farmers():
-    users = mongo.db.users.find()
+    users = list(mongo.db.users.find())
+    return render_template("local_farmers.html", users=users)
+
+
+@app.route("/search", methods = ["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    users = list(mongo.db.users.find({"$text": {"$search": query}}))
     return render_template("local_farmers.html", users=users)
 
 #Register functionality
