@@ -22,7 +22,9 @@
       <div class="col s4">
         <div class="card lime darken-1">
           <div class="card-image responsive-img">
+              <a href="{{ url_for('display_profile', profile=user.username) }}">
               <img src="/static/img/farmer.svg">
+              </a>
           </div>
           <div class="card-content row">
             <p class="purple-text text-darken-1 center-align">User: {{ user.username }}</p>

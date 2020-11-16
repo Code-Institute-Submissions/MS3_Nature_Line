@@ -33,11 +33,20 @@ def local_farmers():
     return render_template("local_farmers.html", users=users)
 
 
+@app.route("/display_profile/<profile>")
+def display_profile(profile):
+    username = mongo.db.users.find_one({"username": profile})
+    products_sold = mongo.db.products_sold.find()
+    return render_template("display_profile.html", username=username, products_sold=products_sold)
+
+
+#Search functionality
 @app.route("/search", methods = ["GET", "POST"])
 def search():
     query = request.form.get("query")
     users = list(mongo.db.users.find({"$text": {"$search": query}}))
     return render_template("local_farmers.html", users=users)
+
 
 #Register functionality
 @app.route("/register", methods=["GET", "POST"])
@@ -101,7 +110,7 @@ def profile(username):
     curr_user = mongo.db.users.find_one({"username": session["user"]})
     products_sold = mongo.db.products_sold.find()
     if session["user"]:
-        return render_template("profile.html", username=username, curr_user=curr_user, products_sold=products_sold)
+        return render_template ("profile.html", username=username, curr_user=curr_user, products_sold=products_sold)
 
     return redirect(url_for("login"))
 

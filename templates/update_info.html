@@ -5,18 +5,6 @@
         <div class="row">
             <form class="col s8 m4 offset-s2 offset-m4" method="POST" action="{{ url_for('update_info', username = curr_user.username) }}">
               <div class="card-panel lime darken-1">
-                 <!--Account type-->
-                <div class="row">
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix lime-text text-lighten-5">supervisor_account</i>
-                      <select class="lime-text text-lighten-5" name="type" required>
-                        <option value="" disabled selected >Choose your option</option>
-                        <option value="buyer">Buyer</option>
-                        <option value="producer">Producer</option>
-                      </select>
-                      <label class="lime-text text-lighten-5" for="type">Choose account type:</label>
-                  </div>
-              </div>
                 <!--Location-->
                 <div class="row">
                     <div class="input-field col s12">

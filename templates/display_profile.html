@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="center-align landing-txt">Welcome to {{ username.username }}'s profile!</h3>
+    <div class="container profile-container">
+        <div class="row">
+        <!--Profile info-->
+            <div class="col s10 offset-s1 m4">
+                <div class="card lime darken-1">
+                    <div class="card-image">
+                        <img class="responsive-img" src="/static/img/farmer.svg">
+                        <span class="card-title white-text text-darken-1 center-align">User: {{ username.username }}</span>
+                    </div>
+                    <div class="card-content">
+                            <p class="center-align landing-txt">Info</p>
+                            <p class="center-align"><i class="material-icons prefix lime-text text-lighten-5">location_on</i>  {{ username.location }}</p>
+                            <p class="center-align"><i class="material-icons prefix lime-text text-lighten-5">email</i>  {{ username.contact.email }}</p>
+                            <p class="center-align"><i class="material-icons prefix lime-text text-lighten-5">smartphone</i>  {{ username.contact.phone }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8">
+            <!--Products and favorites section-->
+                <h4 class="center-align landing-txt">Products:</h4>
+                    <div class="row">
+                        {% for item in products_sold %}
+                            {% if item.sold_by == username.username %}
+                                <div class="col s6 m4">
+                                    <div class="card lime darken-1">
+                                        <div class="card-image">
+                                            <img src="/static/img/harvest.svg">
+                                        </div>
+                                        <div class="card-content row">
+                                            <p class="card-title landing-txt">{{ item.name }}</p>
+                                            <p class=" col s12 purple-text text-darken-1">Price: {{ item.price }}<i class="tiny material-icons">euro</i></p>
+                                            <p class=" col s12 purple-text text-darken-1">Quantity: {{ item.quantity }}kg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

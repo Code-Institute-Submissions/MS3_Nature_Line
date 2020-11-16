@@ -76,8 +76,5 @@ background-color: #87c950;
     height: 80vh;
     width: 100%;
     margin-top: 5%;
-    background-image: url(/static/img/Asset3.svg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+
 }
