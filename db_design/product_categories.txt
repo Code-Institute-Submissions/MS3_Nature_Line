@@ -1,0 +1,11 @@
+{"_id":{"$oid":"5fb0397d691b1396737eb704"},
+"category":"Fruits"}
+
+{"_id":{"$oid":"5fb039af691b1396737eb705"},
+"category":"Vegetables"}
+
+{"_id":{"$oid":"5fb039c9691b1396737eb706"},
+"category":"Meat"}
+
+{"_id":{"$oid":"5fb039da691b1396737eb707"},
+"category":"Nuts/Seeds"}

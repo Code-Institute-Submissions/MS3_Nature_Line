@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5fb18ce3ea979180fa364e87"},
+"category":"Fruits",
+"name":"Pear",
+"price":"3",
+"quantity":"1",
+"sold_by":"bratex"}

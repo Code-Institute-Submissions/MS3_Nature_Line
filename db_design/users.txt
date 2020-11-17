@@ -1,0 +1,7 @@
+ {"_id":{"$oid":"5fb18ca4ea979180fa364e84"},
+ "username":"bratex",
+ "password":"p2323",
+ "type":"producer",
+ "location":"Cork",
+ "contact":{"email":"bratex@bratex.com",
+ "phone":"6660999"}}
