@@ -6,7 +6,7 @@
             <div class="col s10 offset-s1 m4">
                 <div class="card lime darken-1">
                     <div class="card-image">
-                        <img class="responsive-img" src="/static/img/farmer.svg">
+                        <img class="responsive-img" src="/static/img/farmer.svg" alt="user-img">
                         <span class="card-title white-text text-darken-1 center-align">User: {{ username }}</span>
                     </div>
                     <div class="card-content">
@@ -19,11 +19,13 @@
                     </div>
                     <div class="card-action">
                         <div class="row">
-                            {% if session.user|lower == username and curr_user.type == "producer" %}
-                                <a href="{{ url_for('add_product') }}" class="col s6 btn-small purple darken-1">Add product</a>
-                                <a href="{{ url_for('update_info', username=username) }}" class="col s5 offset-s1 btn-small purple darken-1">Update info</a>
-                            {% elif curr_user.type == "buyer" %}
-                                <a href="{{ url_for('update_info', username=username) }}" class="col s4 offset-s4 btn-small purple darken-1">Update info</a>
+                            {% if session.user|lower == username %}
+                            <div class="row">
+                                <a href="{{ url_for('add_product') }}" class="col s8 btn-small purple darken-1 offset-s2">Add product</a>
+                            </div>
+                            <div class="row">
+                                <a href="{{ url_for('update_info', username=username) }}" class="col s8 btn-small purple darken-1 offset-s2">Update info</a>
+                            </div>
                             {% endif %}
                        </div>
                     </div>
@@ -38,7 +40,7 @@
                                 <div class="col s6 m4">
                                     <div class="card lime darken-1">
                                         <div class="card-image">
-                                            <img src="/static/img/harvest.svg">
+                                            <img src="/static/img/harvest.svg" alt="product-img">
                                             <span class="card-title">{{ item.name }}</span>
                                         </div>
                                         <div class="card-content row">

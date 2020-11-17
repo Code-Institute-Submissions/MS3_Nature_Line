@@ -76,5 +76,21 @@ background-color: #87c950;
     height: 80vh;
     width: 100%;
     margin-top: 5%;
+}
 
+/*About page*/
+.about-bg{
+    height: 80vh;
+    width: 100%;
+    margin-top: 5%;
+    background-image: url(/static/img/Asset1.svg);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-txt{
+    font-family: 'MuseoModerno', cursive;
+    color: #8ccf40;      
+    font-size: 1.5rem;
 }
