@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 # Landing page
 
 
-@app.route("/home")
+@app.route("/")
 def home():
     if 'user' in session:
         return redirect(url_for("profile", username=session["user"]))
